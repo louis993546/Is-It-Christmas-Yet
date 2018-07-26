@@ -1,10 +1,14 @@
 Is It Christmas Yet?
 ================================
 
+Inspired by [Is it Christmas](https://isitchristmas.com/), and so many other similar bots,
+subreddits, and more.
+
 Goal
 ---------------------------
 - Practice best practices
     - MVVM using ViewModel
+    - DI using KOIN
 
 Functionality
 ---------------------------
