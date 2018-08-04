@@ -18,6 +18,39 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "holiday"
+    productFlavors {
+        christmas {
+            dimension "holiday"
+            buildConfigField "int", "HOLIDAY_MONTH", "12"
+            buildConfigField "int", "HOLIDAY_DAY_IN_MONTH", "25"
+        }
+        usaIndependence {
+            dimension "holiday"
+            buildConfigField "int", "HOLIDAY_MONTH", "7"
+            buildConfigField "int", "HOLIDAY_DAY_IN_MONTH", "4"
+        }
+        halloween {
+            dimension "holiday"
+            buildConfigField "int", "HOLIDAY_MONTH", "10"
+            buildConfigField "int", "HOLIDAY_DAY_IN_MONTH", "31"
+        }
+        valentine {
+            dimension "holiday"
+            buildConfigField "int", "HOLIDAY_MONTH", "2"
+            buildConfigField "int", "HOLIDAY_DAY_IN_MONTH", "14"
+        }
+        saintPatricks{
+            dimension "holiday"
+            buildConfigField "int", "HOLIDAY_MONTH", "3"
+            buildConfigField "int", "HOLIDAY_DAY_IN_MONTH", "17"
+        }
+        newYearsEve {
+            dimension "holiday"
+            buildConfigField "int", "HOLIDAY_MONTH", "12"
+            buildConfigField "int", "HOLIDAY_DAY_IN_MONTH", "31"
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

@@ -15,5 +15,8 @@ class App : Application() {
 }
 
 val appModule = module {
-    viewModel { MainFragmentViewModel() }
+    single { Holiday(BuildConfig.HOLIDAY_MONTH, BuildConfig.HOLIDAY_DAY_IN_MONTH) }
+    viewModel { MainFragmentViewModel(get()) }
 }
+
+data class Holiday(val month: Int, val dayInMonth: Int)

@@ -22,7 +22,10 @@ class MainFragment : Fragment() {
     //TODO I don't remember where I read but I should observe LiveData in onActivityCreate
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //This uses the viewLifecycleOwner, cause: https://medium.com/@BladeCoder/architecture-components-pitfalls-part-1-9300dd969808
+        /*
+        This uses the viewLifecycleOwner, cause:
+        https://medium.com/@BladeCoder/architecture-components-pitfalls-part-1-9300dd969808
+         */
         viewModel.answer.observe(viewLifecycleOwner, Observer { updateAnswer(it) })
     }
 
@@ -63,9 +66,7 @@ class MainFragment : Fragment() {
  * - House all "Business" logic
  * - Stuff that should not depend on lifecycle of the view
  */
-class MainFragmentViewModel : ViewModel() {
-    private val CHRISTMAS_MONTH = 12
-    private val CHRISTMAS_DAY = 25
+class MainFragmentViewModel(private val holiday: Holiday) : ViewModel() {
 
     val answer: MutableLiveData<Boolean> = MutableLiveData()
     private var clockThread: Thread? = null
@@ -97,7 +98,7 @@ class MainFragmentViewModel : ViewModel() {
     }
 
     private fun isChristmas(now: LocalDate): Boolean =
-            now.monthValue == CHRISTMAS_MONTH && now.dayOfMonth == CHRISTMAS_DAY
+            now.monthValue == holiday.month && now.dayOfMonth == holiday.dayInMonth
 
     /**
      * Try to [Thread.sleep] the right amount of time to get back to xxxxxxxxxxxx000 ms
